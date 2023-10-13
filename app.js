@@ -4,15 +4,16 @@ const p2Button = document.querySelector('#p2Button');
 const p1ScoreDisplayed = document.querySelector('#p1Score');
 const p2ScoreDisplayed = document.querySelector('#p2Score');
 
+let winningScore = 3;
+const playingTo = document.querySelector('#playingTo');
 
 let p1ScoreTrack = 0;
 let p2ScoreTrack = 0;
 
-let winningScore = 5;
 let isGameOver = false;
 
 
-const playingTo = document.querySelector('#playingTo');
+
 playingTo.addEventListener('change', function(){
     winningScore = parseInt(this.value);
     reset();
@@ -21,17 +22,18 @@ playingTo.addEventListener('change', function(){
 
 
 p1Button.addEventListener('click', function(){
+
     if(!isGameOver){
         p1ScoreTrack+=1;
-        
+            
         if(p1ScoreTrack === winningScore){
             isGameOver = true;
-            p1ScoreDisplayed.classList.add('has-text-primary');
+            p1ScoreDisplayed.classList.add('has-text-primary');   
             p2ScoreDisplayed.classList.add('has-text-danger');
-            
+                
         }
         p1ScoreDisplayed.textContent = p1ScoreTrack;
-
+    
     }
 })
 
